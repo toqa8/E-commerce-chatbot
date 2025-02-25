@@ -7,32 +7,32 @@ This project is a Retrieval-Augmented Generation (RAG)-based chatbot for an e-co
 
 ## 🚀 Features
 
-Q&A-based Retrieval: Uses a structured Q&A dataset to fetch relevant responses.
+- Q&A-based Retrieval: Uses a structured Q&A dataset to fetch relevant responses.
 
-Dynamic Comparisons: Provides price/rating comparisons for products in the same category.
+- Dynamic Comparisons: Provides price/rating comparisons for products in the same category.
 
-Discount Calculations: Computes discounts based on market price.
+- Discount Calculations: Computes discounts based on market price.
 
-Personalized Recommendations: Uses user history and memory to suggest products.
+- Personalized Recommendations: Uses user history and memory to suggest products.
 
-Interactive Conversational Flow: Optimized for natural interactions using LangChain Memory.
+- Interactive Conversational Flow: Optimized for natural interactions using LangChain Memory.
 
-Streamlit Deployment: User-friendly web interface for chatbot interaction.
+- Streamlit Deployment: User-friendly web interface for chatbot interaction.
 
 
 ## 🛠 Technologies Used
 
-Python (Primary language)
+- Python (Primary language)
 
-LangChain (Conversational AI framework)
+- LangChain (Conversational AI framework)
 
-Ollama (LLM for response generation)
+- Ollama (LLM for response generation)
 
-ChromaDB (Vector database for retrieval)
+- ChromaDB (Vector database for retrieval)
 
-Pandas (Data processing)
+- Pandas (Data processing)
 
-Streamlit (For deployment)
+- Streamlit (For deployment)
 
 
 ## 📌 Milestones
