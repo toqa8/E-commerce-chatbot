@@ -1,11 +1,11 @@
 # E-commerce Assistant Chatbot (RAG-based)
 
-# 📌 Project Overview
+## 📌 Project Overview
 
 This project is a Retrieval-Augmented Generation (RAG)-based chatbot for an e-commerce platform. It helps users by answering product-related queries, providing recommendations, and offering comparison insights. The chatbot is built using LangChain, Ollama, ChromaDB, PromptTemplate, and SummaryBufferMemory.
 
 
-# 🚀 Features
+## 🚀 Features
 
 Q&A-based Retrieval: Uses a structured Q&A dataset to fetch relevant responses.
 
@@ -20,7 +20,7 @@ Interactive Conversational Flow: Optimized for natural interactions using LangCh
 Streamlit Deployment: User-friendly web interface for chatbot interaction.
 
 
-# 🛠 Technologies Used
+## 🛠 Technologies Used
 
 Python (Primary language)
 
@@ -35,7 +35,7 @@ Pandas (Data processing)
 Streamlit (For deployment)
 
 
-# 📌 Milestones
+## 📌 Milestones
 
 ✅ Prepare Data: Clean dataset & create Q&A pairs
 
