@@ -31,6 +31,8 @@ This project is a Retrieval-Augmented Generation (RAG)-based chatbot for an e-co
 - ChromaDB (Vector database for retrieval)
 
 - Pandas (Data processing)
+  
+- Matplotlib & Seaborn (Data visualization)
 
 - Streamlit (For deployment)
 
