@@ -1,38 +1,36 @@
-!pip install langchain-community
 import pandas as pd
-from langchain_community.vectorstores import Chroma
-from langchain.docstore.document import Document
-from sentence_transformers import SentenceTransformer
+from langchain_community.vectorstores import Chroma # a vectore store to store embeddings and metadata
+from langchain.docstore.document import Document # a standard format for storing text and metadata
+from sentence_transformers import SentenceTransformer # used to turn text into embeddings using pre-trained modells like "all-mpnet-base-v2"
+from langchain_huggingface import HuggingFaceEmbeddings
+import os
 
 # Load the dataset
-data = pd.read_csv("/content/qna_dataset.csv")
+data = pd.read_csv(r"D:\toka\depi\project\E-commerce-chatbot\data\qna_dataset.csv")
 
-# Combine Question and Answer into a single text
+# Creates a new column "Combined" Combining Question and Answer into a single text
 data["Combined"] = data.apply(
     lambda row: f"question: {row['question']} answer: {row['answer']}", axis=1
 )
 
-# Load Sentence Transformer model
-model = SentenceTransformer('all-mpnet-base-v2') # or other models like all-MiniLM-L6-v2
-
-# Create documents for Chroma
+# Create documents for Chroma, instead of plain text from the combined text, for more flexibility for more use cases and for working smoothly in langchain ecosystem
 documents = [
     Document(page_content=row["Combined"], metadata={"question": row["question"], "answer": row["answer"]})
     for _, row in data.iterrows()
 ]
 
-# Create embeddings using Sentence Transformer
-embeddings = model.encode([doc.page_content for doc in documents])
+# Load the embedding model using LangChain's wrapper
+embedding_function = HuggingFaceEmbeddings(model_name="all-mpnet-base-v2")
 
+try:
 # Create the vector database using from_documents
-vector_db = Chroma.from_texts(
-    texts=[doc.page_content for doc in documents], # chroma from texts requires plain texts.
-    embedding_function=model.encode, # Pass the encode function directly.
-    metadatas=[doc.metadata for doc in documents], # pass the metadata.
-    persist_directory="db"  # Directory to persist the database
-)
+    vector_db = Chroma.from_documents(
+        documents,
+        embedding=embedding_function,  # Correct: pass the wrapper, not just a function
+        persist_directory="db"
+    )
+    print('Vector store created successfully')
+except Exception as e:
+    print(f"error: {e}")
 
-vector_db.persist()  # Save the vector database for later use
-
-# Print first few results for verification
-print(embeddings[:5]) # print the embeddings.
+print("Saving DB to:", os.path.abspath("db"))
