@@ -1,8 +1,7 @@
 import pandas as pd
 from langchain_community.vectorstores import Chroma # a vectore store to store embeddings and metadata
 from langchain.docstore.document import Document # a standard format for storing text and metadata
-from sentence_transformers import SentenceTransformer # used to turn text into embeddings using pre-trained modells like "all-mpnet-base-v2"
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings # to load a hugging face sentence transformer model
 import os
 
 # Load the dataset
