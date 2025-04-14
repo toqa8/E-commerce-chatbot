@@ -17,3 +17,12 @@ for i, result in enumerate(results, 1):
     print(f"\nResult {i}:")
     print("Content:", result.page_content)
     print("Metadata:", result.metadata)
+
+# output:
+# Result 1:
+# Content: question: What is the return policy? answer: You can return products within 30 days of purchase if they are unused and in original packaging.
+# Metadata: {'answer': 'You can return products within 30 days of purchase if they are unused and in original packaging.', 'question': 'What is the return policy?'}
+
+#R esult 2:
+# Content: question: How can I contact customer support? answer: You can reach customer support via phone, email, or live chat on our website.
+# Metadata: {'answer': 'You can reach customer support via phone, email, or live chat on our website.', 'question': 'How can I contact customer support?'}    
