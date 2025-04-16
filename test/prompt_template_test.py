@@ -1,7 +1,3 @@
-
-
-"""**Test**"""
-
 from langchain.prompts import PromptTemplate
 import pandas as pd
 
@@ -19,14 +15,13 @@ Provide a clear and helpful answer based on the information above.
     return PromptTemplate(input_variables=["context", "query"], template=template)
 
 # Simulate user input
-user_query = "How long does delivery take?"
+user_query = "Recommend hair products"
 
 # Use the vector database to retrieve relevant docs
 retrieved_docs = vector_db.similarity_search(user_query)
 
 # Build the context from retrieved documents
 context = "\n".join([doc.page_content for doc in retrieved_docs])
-
 
 # Get the prompt template and format it
 prompt_template = get_prompt_template()
@@ -36,14 +31,16 @@ formatted_prompt = prompt_template.format(context=context, query=user_query)
 print(formatted_prompt)
 
 
-#OUTPUT
+
+
+# OUTPUT
 # You are a helpful e-commerce assistant. Use the following question-answer pairs (context) to help answer the user's question.
 
-# question: What is the discount on Condoms - Extra Time? answer: The discount on Condoms - Extra Time is 0.0%
-# question: What is the discount on For Boys - With Surprise? answer: The discount on For Boys - With Surprise is 0.0%
-# question: What is the discount on Rusk - Baby? answer: The discount on Rusk - Baby is 0.0%
-# question: What is the discount on Papad - Potato? answer: The discount on Papad - Potato is 0.0%
+# question: What is the rating of Styling Shampoo For Men - Cooling & Style? answer: The rating of Styling Shampoo For Men - Cooling & Style is 5.0
+# question: What is the rating of Styling Shampoo For Men - Cooling & Style? answer: The rating of Styling Shampoo For Men - Cooling & Style is 5.0
+# question: What is the rating of Supreme Scalp Rejuvenation Shampoo? answer: The rating of Supreme Scalp Rejuvenation Shampoo is 5.0
+# question: What is the rating of Hair Care Kit - Oil, Shampoo, Conditioner & Serum? answer: The rating of Hair Care Kit - Oil, Shampoo, Conditioner & Serum is 4.1
 
-# User's Question: How long does delivery take?
+# User's Question: Recommend hair products
 
-# Provide a clear and helpful answer based on the information above
+# Provide a clear and helpful answer based on the information above.
