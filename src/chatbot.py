@@ -15,3 +15,9 @@ User's Question: {query}
 Provide a clear and helpful answer based on the information above.
 """
     return PromptTemplate(input_variables=["context", "query"], template=template)
+
+from langchain.chains import ConversationalRetrievalChain
+from langchain.memory import ConversationSummaryBufferMemory
+
+# Add memory to keep track of conversation history
+memory = ConversationSummaryBufferMemory(llm=llm, memory_key="chat_history", return_messages=True)
