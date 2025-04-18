@@ -1,5 +1,15 @@
 from langchain.prompts import PromptTemplate
 import pandas as pd
+from langchain_community.vectorstores import Chroma
+from langchain_huggingface import HuggingFaceEmbeddings
+
+
+embedding_function = HuggingFaceEmbeddings(model_name="all-mpnet-base-v2")
+
+vector_db = Chroma(
+    persist_directory="db",
+    embedding_function=embedding_function
+)
 
 # Import your prompt template function
 def get_prompt_template():
