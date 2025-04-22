@@ -21,3 +21,16 @@ from langchain.memory import ConversationSummaryBufferMemory
 
 # Add memory to keep track of conversation history
 memory = ConversationSummaryBufferMemory(llm=llm, memory_key="chat_history", return_messages=True)
+
+
+
+
+
+
+# Create the conversational retrieval chain (with fallback context override)
+qa_chain = ConversationalRetrievalChain.from_llm(
+    llm=llm,
+    retriever=vector_db.as_retriever(),
+    memory=memory,
+    chain_type_kwargs={"prompt": get_prompt_template()}
+)
