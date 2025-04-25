@@ -21,6 +21,19 @@ from langchain.memory import ConversationSummaryBufferMemory
 
 # Add memory to keep track of conversation history
 memory = ConversationSummaryBufferMemory(llm=llm, memory_key="chat_history", return_messages=True)
+# Final function to process user query with handling of unrelated questions
+def process_query(user_query):
+    docs = get_top_documents_with_threshold(user_query)
+    
+    if not docs:
+        return "Sorry, I couldn't find any related information in our system."
+
+    response = qa_chain({
+        "query": user_query,
+        "context": docs  # override the context with filtered documents
+    })
+
+    return response["answer"]
 
 
 
