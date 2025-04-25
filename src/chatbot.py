@@ -1,8 +1,18 @@
 from langchain.prompts import PromptTemplate
 from langchain_community.llms import Ollama
+from langchain.chains import ConversationalRetrievalChain
+from langchain.memory import ConversationSummaryBufferMemory
+from langchain_community.vectorstores import Chroma
+from langchain_huggingface import HuggingFaceEmbeddings
+
+embedding_function = HuggingFaceEmbeddings(model_name="all-mpnet-base-v2")
+
+vector_db = Chroma(
+    persist_directory="db",
+    embedding_function=embedding_function
+)
 
 llm = Ollama(model='llama2')
-
 
 def get_prompt_template():
     template = """
@@ -15,9 +25,6 @@ User's Question: {query}
 Provide a clear and helpful answer based on the information above.
 """
     return PromptTemplate(input_variables=["context", "query"], template=template)
-
-from langchain.chains import ConversationalRetrievalChain
-from langchain.memory import ConversationSummaryBufferMemory
 
 # Add memory to keep track of conversation history
 memory = ConversationSummaryBufferMemory(llm=llm, memory_key="chat_history", return_messages=True)
