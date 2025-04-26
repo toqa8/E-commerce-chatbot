@@ -1,0 +1,5 @@
+# Ignore Python cache
+__pycache__
+
+# Ignore temporary VS Code runner file
+src/tempCodeRunnerFile.py
