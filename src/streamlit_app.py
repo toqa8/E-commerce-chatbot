@@ -19,3 +19,5 @@ user_input = st.text_input("Ask a question:")
 if user_input:
     response = process_query(user_input)
     st.write("Bot:", response)
+
+# streamlit run d:\toka\depi\project\E-commerce-chatbot\src\streamlit_app.py
