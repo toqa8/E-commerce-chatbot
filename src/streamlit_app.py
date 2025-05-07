@@ -8,7 +8,7 @@ embedding_function = HuggingFaceEmbeddings(model_name="all-mpnet-base-v2")
 
 # Load vector DB
 vector_db = Chroma(
-    persist_directory="C:/Users/hp/db",
+    persist_directory="D:/toka/depi/project/E-commerce-chatbot/src/db",
     embedding_function=embedding_function
 )
 

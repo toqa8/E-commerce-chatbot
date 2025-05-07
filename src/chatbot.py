@@ -10,9 +10,12 @@ embedding_function = HuggingFaceEmbeddings(model_name="all-mpnet-base-v2")
 
 # Load vector DB
 vector_db = Chroma(
-    persist_directory="C:/Users/hp/db",
+    persist_directory="D:/toka/depi/project/E-commerce-chatbot/src/db",
     embedding_function=embedding_function
 )
+
+# Print the number of embeddings (debugging)
+print(f"Loaded {len(vector_db.get()["documents"])} embeddings.")
 
 # Load LLM
 llm = OllamaLLM(model="llama2", temperature=0)
