@@ -14,7 +14,8 @@ vector_db = Chroma(
     embedding_function=embedding_function
 )
 
-
+# Load LLM
+llm = OllamaLLM(model="llama2", temperature=0)
 
 # Prompt template
 def get_prompt_template():
