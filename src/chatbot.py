@@ -39,7 +39,7 @@ Provide a clear and helpful answer based on the information above.
 qa_prompt = get_prompt_template()
 
 # Wrap the LLM and prompt in an LLMChain (for question generation, not used yet directly)
-llm_chain = LLMChain(llm=llm, prompt=qa_prompt)
+# llm_chain = LLMChain(llm=llm, prompt=qa_prompt)
 
 # Conversation memory
 memory = ConversationSummaryBufferMemory(
@@ -52,7 +52,8 @@ memory = ConversationSummaryBufferMemory(
 qa_chain = ConversationalRetrievalChain.from_llm(
     llm=llm,
     retriever=vector_db.as_retriever(),
-    memory=memory
+    memory=memory,
+    combine_docs_chain_kwargs={"prompt": qa_prompt}
 )
 
 # Final function to process user query
@@ -60,3 +61,4 @@ def process_query(user_query):
     response = qa_chain.invoke({"question": user_query})
     real_response = response["answer"]
     return real_response
+
